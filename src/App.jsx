@@ -1,27 +1,26 @@
-import './App.css';
+// App.js
+import React, { useState } from 'react';
+import './App.css'; 
+import ProductList from './ProductList';
 
 function App() {
+  const [produsSelectat, setProdusSelectat] = useState(null);
+
+  const handleSelect = (produs) => {
+    setProdusSelectat(produs);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+      <h1>Das</h1>
+      <ProductList onSelect={handleSelect} />
+      {produsSelectat && (
+        <div className="d-flex justify-content-end">
+          <h2>Detalii Produs</h2>
+          <p>{produsSelectat.nume}</p>
+          
+        </div>
+      )}
     </div>
   );
 }
